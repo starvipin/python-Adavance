@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive step-by-step visualizer for understanding a Python Singly Linked List">
+  <title>LinkedList Lab — Interactive Visualizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="LinkedList Lab home">
+      <span class="brand-mark" aria-hidden="true"><span></span><i></i><span></span></span>
+      <span>LinkedList <strong>Lab</strong></span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="#basics">Basics</a>
+      <a href="#visualizer">Visualizer</a>
+      <a href="#bugs">Why Better</a>
+      <a href="#correct-code">Correct Code</a>
+    </nav>
+    <a class="header-cta" href="#visualizer">Start learning <span aria-hidden="true">↓</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Python data structure · Visual learning guide</p>
+        <h1 id="hero-title">Understand Linked Lists<br>by <em>seeing</em> them.</h1>
+        <p class="hero-intro">Run every node, pointer, and line of code step by step. See exactly what <code>head</code>, <code>next</code>, <code>current</code>, and <code>prev</code> are doing in memory.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#visualizer">Interactive dry-run <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="#correct-code">View corrected code</a>
+        </div>
+        <div class="hero-result" aria-label="Program final output">
+          <span class="status-dot"></span>
+          <span>Final output from your current calls</span>
+          <code>5 10 20 40</code>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Linked list example">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="floating-label label-head">head</div>
+        <div class="hero-chain" aria-hidden="true">
+          <div class="hero-node"><small>data</small><strong>5</strong><b>next</b></div>
+          <span class="hero-arrow"></span>
+          <div class="hero-node"><small>data</small><strong>10</strong><b>next</b></div>
+          <span class="hero-arrow"></span>
+          <div class="hero-node hero-node-active"><small>data</small><strong>20</strong><b>next</b></div>
+        </div>
+        <div class="hero-chain hero-chain-second" aria-hidden="true">
+          <div class="hero-node hero-node-new"><small>data</small><strong>40</strong><b>next</b></div>
+          <span class="hero-arrow"></span>
+          <div class="hero-node"><small>data</small><strong>30</strong><b>None</b></div>
+        </div>
+        <div class="floating-note">New node after 20</div>
+        <div class="hero-caption">
+          <span>Memory view</span>
+          <span><i></i> live pointer</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section basics" id="basics" aria-labelledby="basics-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">01 · Start with the basics</p>
+          <h2 id="basics-title">Four ideas. One complete Linked List.</h2>
+        </div>
+        <p>A linked list is like a train: every carriage stores a value and the address of the next carriage.</p>
+      </div>
+
+      <div class="concept-grid">
+        <article class="concept-card">
+          <span class="concept-number">01</span>
+          <div class="concept-icon head-icon"><i></i></div>
+          <h3><code>head</code></h3>
+          <p>A reference to the first node. This is the entry point for reaching the entire list.</p>
+        </article>
+        <article class="concept-card">
+          <span class="concept-number">02</span>
+          <div class="concept-icon data-icon">42</div>
+          <h3><code>data</code></h3>
+          <p>The actual value stored inside a node—such as <code>5</code>, <code>10</code>, or <code>40</code>.</p>
+        </article>
+        <article class="concept-card">
+          <span class="concept-number">03</span>
+          <div class="concept-icon next-icon"><i></i><b></b></div>
+          <h3><code>next</code></h3>
+          <p>A reference to the next node. These links connect separate nodes into one chain.</p>
+        </article>
+        <article class="concept-card">
+          <span class="concept-number">04</span>
+          <div class="concept-icon none-icon">∅</div>
+          <h3><code>None</code></h3>
+          <p>There is no node after this one. A node with <code>next=None</code> is the final node.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section visualizer-section" id="visualizer" aria-labelledby="visualizer-title">
+      <div class="section-heading visualizer-heading">
+        <div>
+          <p class="section-kicker">02 · Interactive dry-run</p>
+          <h2 id="visualizer-title">Run the code. Watch memory change.</h2>
+        </div>
+        <p>Choose a function, then use Previous and Next to study every line. The blue line is the one currently executing.</p>
+      </div>
+
+      <div class="operation-tabs" id="operationTabs" role="tablist" aria-label="Choose a function"></div>
+
+      <div class="lab-shell" id="labPanel" role="tabpanel" aria-labelledby="tab-story">
+        <header class="lab-header">
+          <div class="lab-title-group">
+            <span class="lab-index" id="labIndex">01</span>
+            <div>
+              <p id="operationPurpose">Complete program flow</p>
+              <h3 id="operationTitle">The complete story of your program</h3>
+            </div>
+          </div>
+          <div class="complexity" id="complexityBadge">
+            <span>Time</span>
+            <strong>Sequence</strong>
+          </div>
+        </header>
+
+        <div class="step-strip">
+          <div>
+            <span class="step-count" id="stepCount">Step 1 / 8</span>
+            <strong id="stepName">An empty list is created</strong>
+          </div>
+          <div class="step-actions">
+            <button class="icon-button" id="prevStep" type="button" aria-label="Previous step">← <span>Previous</span></button>
+            <button class="icon-button icon-button-primary" id="nextStep" type="button"><span>Next step</span> →</button>
+          </div>
+        </div>
+        <div class="progress-track" role="progressbar" id="stepProgress" aria-label="Step progress" aria-valuemin="1" aria-valuemax="8" aria-valuenow="1"><span id="progressFill"></span></div>
+
+        <div class="lab-workspace">
+          <section class="code-panel" aria-labelledby="code-panel-title">
+            <div class="panel-topline">
+              <div>
+                <span class="panel-dot red"></span><span class="panel-dot yellow"></span><span class="panel-dot green"></span>
+              </div>
+              <span id="code-panel-title">linked_list.py</span>
+              <span class="language-tag">PYTHON</span>
+            </div>
+            <pre id="codeView" class="code-view" aria-label="Current function code"></pre>
+          </section>
+
+          <section class="memory-panel" aria-labelledby="memory-panel-title">
+            <div class="panel-topline memory-topline">
+              <span id="memory-panel-title">MEMORY VISUALIZER</span>
+              <span class="live-tag"><i></i> LIVE STATE</span>
+            </div>
+            <div class="memory-canvas" id="memoryCanvas">
+              <svg id="memorySvg" role="img" aria-label="Linked list memory diagram"></svg>
+            </div>
+            <div class="memory-legend" aria-label="Diagram legend">
+              <span><i class="legend-current"></i> current pointer</span>
+              <span><i class="legend-detached"></i> detached node</span>
+              <span><i class="legend-removed"></i> removed node</span>
+            </div>
+          </section>
+        </div>
+
+        <div class="explanation-row" aria-live="polite">
+          <div class="explanation-icon">i</div>
+          <div>
+            <span>What just happened?</span>
+            <p id="stepExplanation">The list object was created and head became None. The list does not contain any nodes yet.</p>
+          </div>
+        </div>
+
+        <footer class="lab-footer">
+          <div><span>POINTERS</span><code id="pointerState">head = None</code></div>
+          <div><span>PRINT OUTPUT</span><code id="outputState">—</code></div>
+        </footer>
+      </div>
+    </section>
+
+    <section class="section function-section" aria-labelledby="functions-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">03 · Function map</p>
+          <h2 id="functions-title">What does each function do?</h2>
+        </div>
+        <p><code>n</code> means the number of nodes currently in the list.</p>
+      </div>
+
+      <div class="function-list">
+        <article class="function-row">
+          <span class="function-order">01</span>
+          <div><h3><code>Node(value)</code></h3><p>Creates a new node with <code>data=value</code> and initially sets <code>next=None</code>.</p></div>
+          <span class="function-cost">O(1)</span>
+        </article>
+        <article class="function-row">
+          <span class="function-order">02</span>
+          <div><h3><code>insertAtEnd(value)</code></h3><p>Finds the final node and connects its <code>next</code> reference to the new node.</p></div>
+          <span class="function-cost">O(n)</span>
+        </article>
+        <article class="function-row">
+          <span class="function-order">03</span>
+          <div><h3><code>insertAtBegin(value)</code></h3><p>Connects the new node to the old head, then makes the new node the head.</p></div>
+          <span class="function-cost best">O(1)</span>
+        </article>
+        <article class="function-row">
+          <span class="function-order">04</span>
+          <div><h3><code>insertAtMiddle(value, x)</code></h3><p>Finds the node containing <code>x</code> and inserts a new node immediately after it.</p></div>
+          <span class="function-cost">O(n)</span>
+        </article>
+        <article class="function-row">
+          <span class="function-order">05</span>
+          <div><h3><code>deleteLinkList(value)</code></h3><p>Redirects the previous node's <code>next</code> reference to the node after the target.</p></div>
+          <span class="function-cost">O(n)</span>
+        </article>
+        <article class="function-row">
+          <span class="function-order">06</span>
+          <div><h3><code>printLinkedList()</code></h3><p>Starts at head, follows each <code>next</code> reference, and prints every node's data.</p></div>
+          <span class="function-cost">O(n)</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section bugs-section" id="bugs" aria-labelledby="bugs-title">
+      <div class="section-heading light-heading">
+        <div>
+          <p class="section-kicker">04 · Why this version</p>
+          <h2 id="bugs-title">Simple rules make the code easier to learn.</h2>
+        </div>
+        <p>The visualizer and the code below now use the same safe version, so there is only one implementation to understand.</p>
+      </div>
+
+      <div class="bug-grid">
+        <article class="bug-card">
+          <span class="bug-label">One rule · Delete</span>
+          <h3>One link update removes any non-head node</h3>
+          <p><code>prev.next = current.next</code> makes the previous node skip the target. It works for both middle and final nodes.</p>
+          <div class="mini-chain"><span>10</span><i></i><del>20</del><i></i><span>40</span><i></i><span>30</span></div>
+        </article>
+        <article class="bug-card">
+          <span class="bug-label">Clear names</span>
+          <h3><code>current</code> is always the node being inspected</h3>
+          <p>For searching and printing, the same pointer name moves one node at a time. <code>prev</code> simply stays one step behind during deletion.</p>
+          <code class="bug-fix">current = current.next</code>
+        </article>
+        <article class="bug-card">
+          <span class="bug-label">Safety first</span>
+          <h3>An empty list is handled before reading node data</h3>
+          <p>The function checks whether <code>current</code> is None before using <code>current.data</code> or <code>current.next</code>.</p>
+          <code class="bug-fix">if current is None: return False</code>
+        </article>
+        <article class="bug-card">
+          <span class="bug-label">Stop early</span>
+          <h3><code>return</code> ends the function when the job is done</h3>
+          <p>Successful insertions and deletions return immediately. If a target is not found, the function reaches one clear <code>return False</code>.</p>
+          <code class="bug-fix">return True</code>
+        </article>
+      </div>
+    </section>
+
+    <section class="section corrected-section" id="correct-code" aria-labelledby="correct-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">05 · Safe version</p>
+          <h2 id="correct-title">This is the code used in every animation.</h2>
+        </div>
+        <p>Read a highlighted line in the visualizer, then find the same line here. There is no second implementation to compare.</p>
+      </div>
+
+      <div class="correct-code-shell">
+        <div class="correct-code-header">
+          <span>correct_linked_list.py</span>
+          <button id="copyCode" type="button" class="copy-button"><span class="copy-icon" aria-hidden="true"></span><span id="copyLabel">Copy code</span></button>
+        </div>
+        <pre><code id="correctCode">class Node:
+    def __init__(self, info, next=None):
+        self.data = info
+        self.next = next
+
+
+class SinglyLinkedList:
+    def __init__(self, head=None):
+        self.head = head
+
+    def insertAtEnd(self, value):
+        temp = Node(value)
+
+        if self.head is None:
+            self.head = temp
+            return
+
+        current = self.head
+        while current.next is not None:
+            current = current.next
+        current.next = temp
+
+    def insertAtBegin(self, value):
+        self.head = Node(value, self.head)
+
+    def insertAtMiddle(self, value, x):
+        current = self.head
+
+        while current is not None:
+            if current.data == x:
+                current.next = Node(value, current.next)
+                return True
+            current = current.next
+
+        return False
+
+    def deleteLinkList(self, value):
+        current = self.head
+
+        if current is None:
+            return False
+
+        if current.data == value:
+            self.head = current.next
+            return True
+
+        prev = current
+        current = current.next
+
+        while current is not None:
+            if current.data == value:
+                prev.next = current.next
+                return True
+            prev = current
+            current = current.next
+
+        return False
+
+    def printLinkedList(self):
+        current = self.head
+
+        while current is not None:
+            print(current.data, end=" ")
+            current = current.next
+        print()</code></pre>
+      </div>
+    </section>
+
+    <section class="final-callout">
+      <p class="section-kicker">Your turn</p>
+      <h2>Predict the pointer first.<br>Then press Next to check.</h2>
+      <a class="button button-primary" href="#visualizer">Return to the visualizer ↑</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><span></span><i></i><span></span></span><span>LinkedList <strong>Lab</strong></span></a>
+    <p>Python linked list · Interactive visual guide</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <noscript>Enable JavaScript to use the interactive visualizer.</noscript>
+  <script src="app.js"></script>
+</body>
+</html>
