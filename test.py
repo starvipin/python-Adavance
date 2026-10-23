@@ -1,13 +1,14 @@
-a = [2,5,0,7,0,4,6,0,89]
+stock = [7,1,5,3,6,4]
+minprice = stock[0]
+maxprice = 0
 
+for i in stock.copy():
+    if i < minprice:
+        minprice = i
 
+    profit = i - minprice
 
-print(a.index(0))
+    if profit > maxprice:
+        maxprice = profit
 
-for value in a.copy():
-    if value == 0:
-        a.append(0)
-
-        a.remove(0)
-
-print(a)
+print(minprice,maxprice)
