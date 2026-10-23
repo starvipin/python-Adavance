@@ -1,14 +1,12 @@
-str1 = input("enter first string:= ")
-str2 = input("enter first string:= ")
+s1 = 'abcadefea'
 
-str1.lower
-str2.lower
+# set1 = set(s1)
 
-s1 = sorted(str1)
-s2 = sorted(str2)
+pr = ''
 
-if s1 == s2:
-    print("Valid Anagram")
-else:
-    print("not Valid Anagram")
-
+for i in s1:
+    if i in pr:
+        break
+    pr += i
+    
+print(pr)
