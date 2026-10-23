@@ -1,12 +1,8 @@
-s1 = 'abcadefea'
+a = [2, 7, 11, 15]
 
-# set1 = set(s1)
+tot = 0
 
-pr = ''
+for i in a:
+    tot = tot + i
 
-for i in s1:
-    if i in pr:
-        break
-    pr += i
-    
-print(pr)
+print(tot) 
