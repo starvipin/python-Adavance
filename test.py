@@ -1,8 +1,13 @@
-a = [2, 7, 11, 15]
+a = [2,5,0,7,0,4,6,0,89]
 
-tot = 0
 
-for i in a:
-    tot = tot + i
 
-print(tot) 
+print(a.index(0))
+
+for value in a.copy():
+    if value == 0:
+        a.append(0)
+
+        a.remove(0)
+
+print(a)
