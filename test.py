@@ -1,7 +1,11 @@
-a = [2, 0, 1, 4, 5]
-c = sorted(a)
+a = ["apple", "banana", "apple", "orange", "banana", "apple"]
 
-for i in range(len(c)):
-    if c[i] != i:
-        print("Missing number:", i)
-        break
+b = {}
+
+for frut in a:
+    if frut in b:
+        b[frut] += 1
+    else:
+        b[frut] = 1
+
+print(b)
